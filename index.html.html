@@ -1,0 +1,2902 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closet Fashion - Elegância e Estilo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-principal: #fef1f1;
+            --cor-secundaria: #fff;
+            --cor-texto: #555;
+            --cor-linha: #f2e1e1;
+            --cor-destaque: #af8f8f;
+contain;     body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('closet.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: var(--cor-texto);
+        }
+        
+        header {
+         background-image: url(closet\ fas.png);
+    /* Expande a imagem para 100% da largura do header e ajusta a altura automaticamente */
+    background-size: 26% auto;
+    /* Centraliza a imagem verticalmente, garantindo que a logo fique no meio */
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Adicione padding superior e inferior para criar espaço e a logo se expandir */
+    padding: 100px 0; /* Ajuste este valor se a logo ainda parecer pequena */
+    
+    background-color: #f2a9e3;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+        }
+        
+        .logo-img {
+            max-width: 300px;
+            height: auto;
+        }
+
+        nav {
+            background: linear-gradient(to right, #f2a9e3, #ffffff);
+            padding: 10px 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            z-index: 10;
+        }
+        
+        nav a {
+            color: var(--cor-texto);
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+            transition: color 0.4s ease, transform 0.2s ease;
+            position: relative;
+        }
+
+        /* Estilo para links de navegação com ícones */
+        .nav-link-with-icon {
+            display: flex;
+            align-items: center;
+            gap: 5px; /* Espaçamento entre o ícone e o texto */
+            justify-content: center;
+        }
+
+        .nav-link-with-icon img {
+            height: 22px;
+            width: auto;
+            filter: grayscale(100%) brightness(50%);
+            transition: filter 0.4s ease;
+        }
+        
+        nav a:hover, nav a.active {
+            color: var(--cor-destaque);
+            transform: translateY(-2px);
+        }
+
+        .nav-link-with-icon:hover img, .nav-link-with-icon.active img {
+            filter: grayscale(0%) brightness(100%);
+        }
+
+        .nav-right {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+        }
+        
+        .carrinho {
+            padding: 0;
+            display: flex;
+            align-items: center;
+            color: var(--cor-texto);
+            transition: color 0.4s ease, transform 0.2s ease;
+        }
+        
+        .carrinho:hover {
+            color: var(--cor-destaque);
+            transform: translateY(-2px);
+        }
+        
+        .carrinho img {
+            height: 22px;
+            width: auto;
+            vertical-align: middle;
+            margin-right: 5px;
+            filter: grayscale(100%) brightness(50%);
+            transition: filter 0.4s ease;
+        }
+
+        .carrinho:hover img {
+            filter: grayscale(0%) brightness(100%);
+        }
+        
+        .linha-vertical {
+            background-color: var(--cor-linha);
+            width: 1px;
+            height: 20px;
+            margin: 0 10px;
+        }
+        
+        /* Estilo do dropdown de perfil */
+        .perfil-dropdown {
+            position: relative;
+            display: inline-block;
+            margin-right: 20px; /* Espaço entre perfil e carrinho */
+        }
+        
+        .perfil-link {
+            cursor: pointer;
+            padding: 10px 20px;
+            color: var(--cor-texto);
+            text-decoration: none;
+            transition: color 0.4s ease, transform 0.2s ease;
+            display: flex; /* Adicionado para alinhar o ícone e o texto */
+            align-items: center;
+            gap: 5px; /* Espaçamento entre o ícone e o texto */
+        }
+        
+        .perfil-link:hover {
+            color: var(--cor-destaque);
+            transform: translateY(-2px);
+        }
+
+        .perfil-link img {
+            height: 22px;
+            width: auto;
+            vertical-align: middle;
+            filter: grayscale(100%) brightness(50%);
+            transition: filter 0.4s ease;
+        }
+
+        .perfil-link:hover img {
+            filter: grayscale(0%) brightness(100%);
+        }
+
+        .perfil-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1;
+            border-radius: 6px;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 5px;
+        }
+        
+        .perfil-content a {
+            color: var(--cor-texto);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            transition: background-color 0.3s ease;
+        }
+        
+        .perfil-content a:hover {
+            background-color: #f0f0f0;
+            color: var(--cor-destaque);
+        }
+        
+        /* Apenas para hover, o clique agora leva para uma tela */
+        .perfil-dropdown:hover .perfil-content {
+            display: block;
+        }
+        
+        /* Novos estilos para a área de perfil */
+        #perfil-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        #perfil-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5em;
+            color: var(--cor-destaque);
+            margin-bottom: 40px;
+        }
+        
+        /* Novos estilos para a área de perfil */
+        .perfil-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .perfil-card {
+            background-color: #f9f9f9;
+            padding: 30px 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .perfil-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .perfil-card img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .perfil-card:hover img {
+            filter: grayscale(0%);
+        }
+
+        .perfil-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5em;
+            color: var(--cor-destaque);
+            margin: 0;
+        }
+
+        .perfil-card p {
+            margin: 5px 0 0;
+            font-size: 0.9em;
+            color: #777;
+        }
+        
+        /* Notificação do carrinho */
+        .carrinho-contador {
+            background-color: var(--cor-destaque);
+            color: #fff;
+            font-size: 0.8em;
+            font-weight: bold;
+            border-radius: 50%;
+            padding: 2px 6px;
+            position: absolute;
+            top: -5px;
+            right: 0;
+            transform: translate(50%, -50%);
+        }
+
+        .content-section {
+            display: none;
+            padding: 50px 20px;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .content-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: var(--cor-destaque);
+            font-weight: 600;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: var(--cor-secundaria);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #f0eaea;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            min-height: 300px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-info h3 {
+            font-size: 1.2em;
+            margin: 0 0 5px;
+            font-weight: 600;
+        }
+
+        .product-info p {
+            margin: 0;
+            color: #888;
+        }
+
+        .product-info .price {
+            font-weight: bold;
+            color: var(--cor-destaque);
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px 15px 15px;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-adicionar {
+            background-color: var(--cor-texto);
+            color: #fff;
+        }
+
+        .btn-adicionar:hover {
+            background-color: #333;
+        }
+
+        .btn-comprar {
+            background-color: var(--cor-destaque);
+            color: #fff;
+        }
+
+        .btn-comprar:hover {
+            background-color: #9d7d7d;
+        }
+        
+        /* Novos estilos do carrinho */
+        #carrinho-content {
+            display: flex;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: flex-start;
+        }
+
+        .cart-container {
+            flex: 2;
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        #carrinho-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .carrinho-item {
+            display: grid;
+            grid-template-columns: 80px 1fr 100px 50px;
+            align-items: center;
+            gap: 20px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease;
+        }
+        
+        .carrinho-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .carrinho-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        
+        .carrinho-item-info {
+            flex-grow: 1;
+        }
+
+        .carrinho-item-info h4 {
+            margin: 0;
+            font-size: 1.1em;
+            color: var(--cor-texto);
+        }
+
+        .carrinho-item-info p {
+            margin: 5px 0 0;
+            font-size: 0.9em;
+            color: #777;
+        }
+
+        .carrinho-item-price {
+            font-weight: bold;
+            color: var(--cor-destaque);
+            font-size: 1em;
+            justify-self: end;
+        }
+
+        .quantidade-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .quantidade-item button {
+            background-color: #eee;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 5px 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .quantidade-item button:hover {
+            background-color: #ddd;
+        }
+
+        .quantidade-item span {
+            font-weight: bold;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .remover-item {
+            background: none;
+            border: none;
+            cursor: pointer;
+            justify-self: end;
+        }
+
+        .remover-item img {
+            width: 20px;
+            height: 20px;
+            filter: grayscale(100%);
+            transition: filter 0.2s;
+        }
+
+        .remover-item:hover img {
+            filter: grayscale(0%) brightness(50%) sepia(100%) hue-rotate(-50deg) saturate(300%);
+        }
+
+        .cart-summary {
+            flex: 1;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 20px; /* Mantém o resumo visível no topo da página */
+        }
+        
+        .cart-summary h3 {
+            font-size: 1.5em;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--cor-destaque);
+            border-bottom: 2px solid var(--cor-linha);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .cart-summary-line {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .cart-summary-line.total {
+            font-size: 1.3em;
+            font-weight: bold;
+            border-top: 2px dashed #eee;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+        
+        .cart-summary .btn-finalizar {
+            width: 100%;
+            background-color: var(--cor-destaque);
+            color: #fff;
+            padding: 15px;
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        .btn-confirmar-pagamento {
+            width: 100%;
+            background-color: #3e8e41; /* Cor verde para destaque */
+            color: #fff;
+            padding: 15px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .btn-confirmar-pagamento:hover {
+            background-color: #4a9e4d;
+        }
+
+        /* Estilos do formulário de checkout */
+        #checkout-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .form-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--cor-destaque);
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--cor-destaque);
+        }
+        
+        .flex-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .flex-group .form-group {
+            flex: 1;
+        }
+        
+        .pedido-resumo {
+            border-top: 2px solid var(--cor-linha);
+            margin-top: 20px;
+            padding-top: 20px;
+        }
+        
+        .pedido-resumo h3 {
+            margin-top: 0;
+        }
+        
+        /* Estilos da nova seção de contato */
+        #contato-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        
+        #contato-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5em;
+            color: var(--cor-destaque);
+            margin-bottom: 20px;
+        }
+        
+        #contato-content p {
+            font-size: 1.1em;
+            color: #777;
+            margin-bottom: 30px;
+        }
+        
+        #form-contato {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: left;
+        }
+        
+        #form-contato textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        #form-contato .btn-enviar {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--cor-destaque);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        #form-contato .btn-enviar:hover {
+            background-color: #9d7d7d;
+        }
+        
+        .contato-info-extra {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px dashed var(--cor-linha);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+        
+        .contato-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contato-item img {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Estilos da notificação de sucesso */
+        .toast-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast-notification.show {
+            opacity: 1;
+        }
+        
+        /* Estilos da nova seção de rastreamento */
+        #rastreamento-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        
+        #rastreamento-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--cor-destaque);
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        
+        .info-rastreamento {
+            text-align: left;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            color: #666;
+        }
+        
+        .info-rastreamento p {
+            margin: 5px 0;
+        }
+        
+        .info-rastreamento p span {
+            font-weight: bold;
+            color: var(--cor-texto);
+        }
+        
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+            padding-left: 20px;
+            margin-top: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #ddd;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding: 10px 0 10px 25px;
+            border-left: 2px solid #ddd;
+            width: 100%;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 15px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 2px #ddd;
+        }
+        
+        .timeline-item.active::before {
+            background-color: var(--cor-destaque);
+            box-shadow: 0 0 0 2px var(--cor-destaque);
+        }
+        
+        .timeline-item h4 {
+            margin: 0;
+            font-size: 1.2em;
+            color: var(--cor-texto);
+        }
+        
+        .timeline-item p {
+            margin: 5px 0 0;
+            font-size: 0.9em;
+            color: #888;
+        }
+        
+        .timeline-item.active h4 {
+            font-weight: bold;
+            color: var(--cor-destaque);
+        }
+        
+        /* Estilos da nova seção de meus pedidos */
+        #meus-pedidos-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .pedido-card {
+            display: flex;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .pedido-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pedido-info {
+            flex-grow: 1;
+        }
+        
+        .pedido-info h4 {
+            margin: 0 0 5px;
+            font-size: 1.2em;
+            color: var(--cor-destaque);
+        }
+        
+        .pedido-info p {
+            margin: 0;
+            color: #777;
+        }
+        
+        .pedido-status {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: #fff;
+            margin-left: 20px;
+        }
+
+        .status-confirmado {
+            background-color: #4CAF50;
+        }
+        
+        .status-entregue {
+            background-color: #2196F3;
+        }
+        
+        .status-enviado {
+            background-color: #FFC107;
+        }
+        
+        .status-em-transporte {
+            background-color: #FFC107;
+        }
+        
+        .btn-rastrear-pedido {
+            background-color: var(--cor-destaque);
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        .btn-rastrear-pedido:hover {
+            background-color: #9d7d7d;
+        }
+
+        /* Estilos da nova seção de dados pessoais e endereços */
+        .info-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .info-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--cor-destaque);
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        
+        .info-card p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .info-card .btn-editar {
+            background-color: #777;
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .info-card .btn-editar:hover {
+            background-color: #555;
+        }
+        
+        .info-card .btn-salvar {
+            background-color: var(--cor-destaque);
+        }
+
+        .info-card .btn-salvar:hover {
+            background-color: #9d7d7d;
+        }
+
+        .endereco-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .endereco-item-info {
+            flex-grow: 1;
+        }
+        
+        .endereco-item-info strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .endereco-acoes button {
+            background: none;
+            border: none;
+            color: #af8f8f;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .endereco-acoes button:hover {
+            color: #8b6d6d;
+        }
+
+        #dados-pessoais-content, #enderecos-content, #seguranca-content {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        /* Estilos do novo modal de endereço */
+        .modal-add-endereco-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 500px;
+            text-align: left;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .modal-add-endereco-content h3 {
+            text-align: center;
+        }
+
+        .modal-add-endereco-content .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .modal-add-endereco-content .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        /* Estilos da nova seção de segurança */
+        #seguranca-content p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .btn-mudar-senha {
+            background-color: var(--cor-destaque);
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .btn-mudar-senha:hover {
+            background-color: #9d7d7d;
+        }
+        
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+        
+        /* Estilos do Modal de Confirmação */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .modal-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--cor-destaque);
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .modal-content p {
+            font-size: 1.2em;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn-modal {
+            padding: 12px 25px;
+            font-size: 1em;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: none;
+            text-decoration: none;
+            color: #fff;
+        }
+        
+        .btn-voltar {
+            background-color: var(--cor-texto);
+        }
+
+        .btn-voltar:hover {
+            background-color: #333;
+        }
+
+        .btn-rastrear {
+            background-color: var(--cor-destaque);
+        }
+
+        .btn-rastrear:hover {
+            background-color: #9d7d7d;
+        }
+
+        .btn-nao {
+            background-color: #f44336;
+        }
+
+        .btn-nao:hover {
+            background-color: #d32f2f;
+        }
+        
+        .btn-sim {
+            background-color: #4CAF50;
+        }
+        
+        .btn-sim:hover {
+            background-color: #45a049;
+        }
+
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Estilos da nova seção de perguntas frequentes */
+        #faqs-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #f0eaea;
+            padding-bottom: 15px;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-item summary {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--cor-destaque);
+            cursor: pointer;
+            padding: 10px 0;
+            outline: none;
+            transition: color 0.3s ease;
+            display: list-item; /* Permite o ícone de expansão padrão */
+            list-style: none; /* Remove o ícone padrão para criar um personalizado */
+            position: relative;
+        }
+
+        .faq-item summary::marker {
+            display: none;
+        }
+        
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        .faq-item summary::after {
+            content: '+';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ccc;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item[open] summary::after {
+            content: '-';
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .faq-item summary:hover {
+            color: #8b6d6d;
+        }
+
+        .faq-item p {
+            font-size: 1em;
+            color: #666;
+            padding: 10px 15px 0 15px;
+            line-height: 1.6;
+        }
+
+        /* Novos estilos para a seção Loja Física */
+        #loja-fisica-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .loja-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .loja-card {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            max-width: 400px;
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .loja-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .loja-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8em;
+            color: var(--cor-destaque);
+            margin: 0 0 10px;
+        }
+
+        .loja-card p {
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+        
+        .loja-card a {
+            color: #4A90E2;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 15px;
+        }
+
+        .loja-card a:hover {
+            color: #357ABD;
+        }
+
+        .horarios-info {
+            background-color: #f0eaea;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        
+        .horarios-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5em;
+            color: var(--cor-destaque);
+            margin-bottom: 10px;
+        }
+
+        /* Estilos do Chatbot */
+        #chatbot-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 320px;
+            background-color: var(--cor-secundaria);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            z-index: 100;
+            font-family: 'Lato', sans-serif;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            height: 400px;
+            transition: all 0.3s ease;
+        }
+
+        #chatbot-header {
+            background-color: var(--cor-destaque);
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #chatbot-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--cor-destaque);
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            z-index: 101;
+            transition: transform 0.3s ease;
+        }
+
+        #chatbot-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        #chatbot-toggle img {
+            width: 35px;
+            height: 35px;
+            filter: invert(100%);
+        }
+
+        #chat-window {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            word-wrap: break-word;
+        }
+
+        .message.user {
+            background-color: var(--cor-destaque);
+            color: #fff;
+            align-self: flex-end;
+            border-bottom-right-radius: 0;
+        }
+
+        .message.bot {
+            background-color: #e0e0e0;
+            color: var(--cor-texto);
+            align-self: flex-start;
+            border-bottom-left-radius: 0;
+        }
+
+        #chat-input-container {
+            padding: 15px;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            gap: 10px;
+        }
+
+        #chat-input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-family: 'Lato', sans-serif;
+            outline: none;
+        }
+
+        #chat-send {
+            background-color: var(--cor-destaque);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.5em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        #chat-send:hover {
+            background-color: #9d7d7d;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+       <a href="#">
+        </a>
+    </header>
+    <nav>
+        <a href="#" class="nav-link active nav-link-with-icon" data-target="vestidos">
+            <img src="vestido sim.png" alt="Vestidos">
+            Vestidos
+        </a>
+        <a href="#" class="nav-link nav-link-with-icon" data-target="acessorios">
+            <img src="brincos sim.png" alt="Acessórios">
+            Acessórios
+        </a>
+        <a href="#" class="nav-link nav-link-with-icon" data-target="blusas">
+            <img src="blusas sim.png" alt="Blusas">
+            Blusas
+        </a>
+        <a href="#" class="nav-link nav-link-with-icon" data-target="calcas">
+            <img src="calca sim.png" alt="Calças">
+            Calças
+        </a>
+        <a href="#" class="nav-link nav-link-with-icon" data-target="calcados">
+            <img src="salto sim.png" alt="Calçados">
+            Calçados
+        </a>
+        <a href="#" class="nav-link nav-link-with-icon" data-target="loja-fisica">
+            <img src="simbolo sim.png" alt="Loja Física">
+            Loja Física
+        </a>
+        <div class="nav-right">
+            <div class="perfil-dropdown">
+                <a href="#" class="perfil-link nav-link" data-target="perfil">
+                    <img src="https://img.icons8.com/wired/64/person-male.png" alt="Perfil">
+                    Perfil
+                </a>
+                <div class="perfil-content">
+                    <a href="#" class="nav-link" data-target="meus-pedidos">Meus Pedidos</a>
+                    <a href="#" class="nav-link" data-target="seguranca">Segurança</a>
+                    <a href="#" class="nav-link" data-target="dados-pessoais">Dados Pessoais</a>
+                    <a href="#" class="nav-link" data-target="enderecos">Endereços</a>
+                    <a href="#" class="nav-link" data-target="contato">Contate-nos</a>
+                    <a href="#" class="nav-link" data-target="faqs">Perguntas Frequentes</a>
+                </div>
+            </div>
+            <span class="linha-vertical"></span>
+            <a href="#carrinho" class="carrinho nav-link" data-target="carrinho">
+                <img src="https://img.icons8.com/wired/64/shopping-cart.png" alt="Carrinho de Compras">
+                Carrinho
+                <span class="carrinho-contador" id="carrinho-contador" style="display: none;">0</span>
+            </a>
+        </div>
+    </nav>
+    <main>
+        <section id="vestidos" class="content-section active">
+            <h2>Vestidos</h2>
+            <div class="products-grid">
+                <div class="product-card" data-id="vestido-1">
+                    <img src="midi florald.webp" alt="Vestido de Verão Estampado">
+                    <div class="product-info">
+                        <h3>Vestido Midi Floral</h3>
+                        <p>Perfeito para dias quentes</p>
+                        <p class="price" data-value="289.90">R$ 289,90</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="vestido-2">
+                    <img src="saas.webp" alt="Vestido de Festa Preto">
+                    <div class="product-info">
+                        <h3>Vestido Longo de Festa</h3>
+                        <p>Elegância para ocasiões especiais</p>
+                        <p class="price" data-value="549.00">R$ 549,00</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="vestido-3">
+                    <img src="https://images.pexels.com/photos/1233648/pexels-photo-1233648.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Vestido Casual Jeans">
+                    <div class="product-info">
+                        <h3>Vestido Jeans Acinturado</h3>
+                        <p>Estilo e conforto para o dia a dia</p>
+                        <p class="price" data-value="199.90">R$ 199,90</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="vestido-4">
+                    <img src="VESTIDO BEGE.png" alt="Vestido de Linho Bege">
+                    <div class="product-info">
+                        <h3>Vestido de Linho Bege</h3>
+                        <p>Frescor e elegância natural</p>
+                        <p class="price" data-value="319.90">R$ 319,90</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="vestido-5">
+                    <img src="poá.jpg" alt="Vestido com estampa de bolinhas">
+                    <div class="product-info">
+                        <h3>Vestido Poá Cinto</h3>
+                        <p>Charme retrô e moderno</p>
+                        <p class="price" data-value="229.90">R$ 229,90</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="vestido-6">
+                    <img src="tubinho p.png" alt="Vestido curto preto">
+                    <div class="product-info">
+                        <h3>Vestido Tubinho Preto</h3>
+                        <p>Clássico e versátil</p>
+                        <p class="price" data-value="159.90">R$ 159,90</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="vestido-7">
+                    <img src="longo fashion.webp" alt="Vestido longo branco">
+                    <div class="product-info">
+                        <h3>Vestido Longo de Alça</h3>
+                        <p>Leveza e fluidez para o verão</p>
+                        <p class="price" data-value="349.90">R$ 349,90</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="vestido-8">
+                    <img src="canelado.jpg" alt="Vestido de malha canelada">
+                    <div class="product-info">
+                        <h3>Vestido Canelado Manga Longa</h3>
+                        <p>Conforto e estilo casual</p>
+                        <p class="price" data-value="149.90">R$ 149,90</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="vestido-9">
+                    <img src="vermelho.png" alt="Vestido de festa vermelho">
+                    <div class="product-info">
+                        <h3>Vestido de Festa Vermelho</h3>
+                        <p>Design moderno e elegante</p>
+                        <p class="price" data-value="680.00">R$ 680,00</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="vestido-10">
+                    <img src="fenda.webp" alt="Vestido de festa com fenda">
+                    <div class="product-info">
+                        <h3>Vestido Longo com Fenda</h3>
+                        <p>Toque de sensualidade na medida</p>
+                        <p class="price" data-value="499.90">R$ 499,90</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="vestido-11">
+                    <img src="babado.webp" alt="Vestido de verão com alças finas">
+                    <div class="product-info">
+                        <h3>Vestido de Verão com Babados</h3>
+                        <p>Leveza e movimento para o dia</p>
+                        <p class="price" data-value="210.00">R$ 210,00</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="vestido-12">
+                    <img src="china.webp" alt="Vestido com estampa de bolinhas">
+                    <div class="product-info">
+                        <h3>Vestido Longo de Seda</h3>
+                        <p>Fluidez e sofisticação</p>
+                        <p class="price" data-value="750.00">R$ 750,00</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="acessorios" class="content-section">
+            <h2>Acessórios</h2>
+            <div class="products-grid">
+                <div class="product-card" data-id="acessorio-1">
+                    <img src="couro.webp" alt="Bolsa Transversal">
+                    <div class="product-info">
+                        <h3>Bolsa de Couro Genuíno</h3>
+                        <p>Ideal para o trabalho e lazer</p>
+                        <p class="price" data-value="380.00">R$ 380,00</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="acessorio-2">
+                    <img src="perolas.webp" alt="Colar de Pérolas">
+                    <div class="product-info">
+                        <h3>Colar de Pérolas Clássico</h3>
+                        <p>Toque de sofisticação</p>
+                        <p class="price" data-value="120.00">R$ 120,00</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="acessorio-3">
+                    <img src="gatinho.webp" alt="Óculos de Sol">
+                    <div class="product-info">
+                        <h3>Óculos de Sol Gatinho</h3>
+                        <p>Proteção e muito estilo</p>
+                        <p class="price" data-value="210.00">R$ 210,00</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="acessorio-4">
+                    <img src="argola.webp" alt="Brincos de argola dourados">
+                    <div class="product-info">
+                        <h3>Brincos de Argola Dourados</h3>
+                        <p>O toque moderno para o seu look</p>
+                        <p class="price" data-value="85.00">R$ 85,00</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="acessorio-5">
+                    <img src="fino.webp" alt="Cinto de Couro Preto">
+                    <div class="product-info">
+                        <h3>Cinto de Couro Fino</h3>
+                        <p>Um clássico indispensável</p>
+                        <p class="price" data-value="110.00">R$ 110,00</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="acessorio-6">
+                    <img src="seda.webp" alt="Lenço de Seda Estampado">
+                    <div class="product-info">
+                        <h3>Lenço de Seda Estampado</h3>
+                        <p>Versátil e charmoso</p>
+                        <p class="price" data-value="75.00">R$ 75,00</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="acessorio-7">
+                    <img src="lenco de seda floral.jpg" alt="Lenço estampado">
+                    <div class="product-info">
+                        <h3>Lenço de Seda Floral</h3>
+                        <p>O acessório que faltava no seu look</p>
+                        <p class="price" data-value="80.00">R$ 80,00</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="acessorio-8">
+                    <img src="praia.webp" alt="Chapéu de palha">
+                    <div class="product-info">
+                        <h3>Chapéu de Praia</h3>
+                        <p>Proteção com elegância</p>
+                        <p class="price" data-value="95.00">R$ 95,00</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="blusas" class="content-section">
+            <h2>Blusas</h2>
+            <div class="products-grid">
+                <div class="product-card" data-id="blusa-1">
+                    <img src="social.webp" alt="Camisa Branca de Algodão">
+                    <div class="product-info">
+                        <h3>Camisa Social Branca</h3>
+                        <p>Peça coringa para o guarda-roupa</p>
+                        <p class="price" data-value="169.90">R$ 169,90</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="blusa-2">
+                    <img src="malha fina.webp" alt="Blusa de Malha">
+                    <div class="product-info">
+                        <h3>Blusa de Malha Fina</h3>
+                        <p>Conforto e versatilidade</p>
+                        <p class="price" data-value="89.90">R$ 89,90</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="blusa-3">
+                    <img src="blusa seda estamp.webp" alt="Blusa de Seda Estampada">
+                    <div class="product-info">
+                        <h3>Blusa de Seda Estampada</h3>
+                        <p>Sofisticação em cada detalhe</p>
+                        <p class="price" data-value="249.90">R$ 249,90</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="blusa-4">
+                    <img src="cropped.PNG" alt="Cropped Branco">
+                    <div class="product-info">
+                        <h3>Cropped de Algodão</h3>
+                        <p>Perfeito para looks casuais</p>
+                        <p class="price" data-value="69.90">R$ 69,90</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="calcas" class="content-section">
+            <h2>Calças</h2>
+            <div class="products-grid">
+                <div class="product-card" data-id="calca-1">
+                    <img src="skinny.jpg" alt="Calça Jeans Skinny">
+                    <div class="product-info">
+                        <h3>Calça Jeans Skinny</h3>
+                        <p>Um clássico que combina com tudo</p>
+                        <p class="price" data-value="250.00">R$ 250,00</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="calca-2">
+                    <img src="pantalona.jpg" alt="Calça Pantalona Preta">
+                    <div class="product-info">
+                        <h3>Calça Pantalona Preta</h3>
+                        <p>Elegância e conforto para o trabalho</p>
+                        <p class="price" data-value="320.00">R$ 320,00</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="calca-3">
+                    <img src="sarja.webp" alt="Calça de Sarja Bege">
+                    <div class="product-info">
+                        <h3>Calça de Sarja Cargo</h3>
+                        <p>Praticidade e estilo urbano</p>
+                        <p class="price" data-value="189.90">R$ 189,90</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="calca-4">
+                    <img src="legging.webp" alt="Calça Legging Preta">
+                    <div class="product-info">
+                        <h3>Calça Legging Fitness</h3>
+                        <p>Conforto para seus treinos</p>
+                        <p class="price" data-value="95.00">R$ 95,00</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="calcados" class="content-section">
+            <h2>Calçados</h2>
+            <div class="products-grid">
+                <div class="product-card" data-id="calcado-1">
+                    <img src="esportivo.webp" alt="Tênis Esportivo">
+                    <div class="product-info">
+                        <h3>Tênis Esportivo</h3>
+                        <p>Conforto e desempenho para seus treinos</p>
+                        <p class="price" data-value="399.90">R$ 399,90</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="calcado-2">
+                    <img src="salto.webp" alt="Sandália de Salto Fino">
+                    <div class="product-info">
+                        <h3>Sandália de Salto Fino</h3>
+                        <p>Elegância para ocasiões especiais</p>
+                        <p class="price" data-value="280.00">R$ 280,00</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="calcado-3">
+                    <img src="bota couro.jpg" alt="Bota de Couro">
+                    <div class="product-info">
+                        <h3>Bota de Couro</h3>
+                        <p>Estilo e durabilidade para o inverno</p>
+                        <p class="price" data-value="450.00">R$ 450,00</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="calcado-4">
+                    <img src="fashion.jpg" alt="Sapatilha Conforto">
+                    <div class="product-info">
+                        <h3>Sapatilha Confort +</h3>
+                        <p>Praticidade e elegância para o dia a dia</p>
+                        <p class="price" data-value="139.90">R$ 139,90</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="calcado-5">
+                    <img src="casual.jpg" alt="Salto Alto Casual">
+                    <div class="product-info">
+                        <h3>Salto Alto Casual</h3>
+                        <p>Um clássico que combina com tudo</p>
+                        <p class="price" data-value="299.90">R$ 299,90</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-adicionar">Adicionar ao Carrinho</button>
+                        <button class="btn btn-comprar">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="loja-fisica" class="content-section">
+            <h2>Nossas Lojas Físicas</h2>
+            <div id="loja-fisica-content">
+                <div class="loja-grid">
+                    <div class="loja-card">
+                        <h3>Loja São Paulo</h3>
+                        <p><strong>Endereço:</strong> Closet Fashion Shopping Iguatemi - Av. Brig. Faria Lima, 2232</p>
+                        <p><strong>Telefone:</strong> (11) 587554781</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Shopping%20Iguatemi%20-%20Av.%20Brig.%20Faria%20Lima,%202232" target="_blank">
+                            Ver no Google Maps
+                            <img src="https://img.icons8.com/material-outlined/24/000000/map-marker.png" alt="Ícone de Mapa" style="width: 20px; height: 20px;">
+                        </a>
+                    </div>
+                    <div class="loja-card">
+                        <h3>Loja Rio de Janeiro</h3>
+                        <p><strong>Endereço:</strong> Avenida paris, bonsucesso, Rio de janeiro</p>
+                        <p><strong>Telefone:</strong> (21) 987554890</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Avenida+paris,+bonsucesso,+Rio+de+janeiro" target="_blank">
+                            Ver no Google Maps
+                            <img src="https://img.icons8.com/material-outlined/24/000000/map-marker.png" alt="Ícone de Mapa" style="width: 20px; height: 20px;">
+                        </a>
+                    </div>
+                </div>
+                <div class="horarios-info">
+                    <h3>Horário de Funcionamento</h3>
+                    <p><strong>Segunda a Sexta:</strong> 09h às 19h</p>
+                    <p><strong>Sábado:</strong> 09h às 15h</p>
+                    <p><strong>Domingo:</strong> Fechado</p>
+                </div>
+            </div>
+        </section>
+        <section id="carrinho" class="content-section">
+            <h2>Meu Carrinho</h2>
+            <div id="carrinho-content">
+                <div class="cart-container">
+                    <h3>Itens no Carrinho</h3>
+                    <ul id="carrinho-items">
+                        </ul>
+                </div>
+                <div class="cart-summary">
+                    <h3>Resumo da Compra</h3>
+                    <div class="cart-summary-line">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">R$ 0,00</span>
+                    </div>
+                    <div class="cart-summary-line">
+                        <span>Frete:</span>
+                        <span id="frete">Grátis</span>
+                    </div>
+                    <div class="cart-summary-line total">
+                        <span>Total:</span>
+                        <span id="total">R$ 0,00</span>
+                    </div>
+                    <a href="#" class="btn btn-finalizar nav-link" data-target="checkout">Finalizar Compra</a>
+                </div>
+            </div>
+        </section>
+        <section id="checkout" class="content-section">
+            <h2>Finalizar Compra</h2>
+            <div id="checkout-content">
+                <div class="form-section">
+                    <h3>Informações de Envio</h3>
+                    <div class="form-group">
+                        <label for="nome-completo">Nome Completo</label>
+                        <input type="text" id="nome-completo" required>
+                    </div>
+                    <div class="flex-group">
+                        <div class="form-group">
+                            <label for="cep">CEP</label>
+                            <input type="text" id="cep" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cidade">Cidade</label>
+                            <input type="text" id="cidade" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="endereco">Endereço (Rua, Número, Bairro)</label>
+                        <input type="text" id="endereco" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="complemento">Complemento (Opcional)</label>
+                        <input type="text" id="complemento">
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h3>Pagamento</h3>
+                    <div class="form-group">
+                        <label for="cartao-numero">Número do Cartão</label>
+                        <input type="text" id="cartao-numero" required>
+                    </div>
+                    <div class="flex-group">
+                        <div class="form-group">
+                            <label for="validade">Validade</label>
+                            <input type="text" id="validade" placeholder="MM/AA" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nome-cartao">Nome Impresso no Cartão</label>
+                        <input type="text" id="nome-cartao" required>
+                    </div>
+                </div>
+                <div class="pedido-resumo">
+                    <h3>Resumo do Pedido</h3>
+                    <div id="checkout-items">
+                        </div>
+                    <div class="cart-summary-line">
+                        <span>Total a Pagar:</span>
+                        <span id="checkout-total">R$ 0,00</span>
+                    </div>
+                </div>
+                <button type="button" class="btn-confirmar-pagamento">Confirmar Pagamento</button>
+            </div>
+        </section>
+        <section id="perfil" class="content-section">
+            <h2>Meu Perfil</h2>
+            <div class="perfil-grid">
+                <div class="perfil-card nav-link" data-target="meus-pedidos">
+                    <img src="https://img.icons8.com/pastel-glyph/64/purchase-order.png" alt="Meus Pedidos">
+                    <h3>Meus Pedidos</h3>
+                    <p>Veja o status das suas compras</p>
+                </div>
+                <div class="perfil-card nav-link" data-target="dados-pessoais">
+                    <img src="https://img.icons8.com/pastel-glyph/64/person-male--v1.png" alt="Dados Pessoais">
+                    <h3>Dados Pessoais</h3>
+                    <p>Atualize suas informações</p>
+                </div>
+                <div class="perfil-card nav-link" data-target="enderecos">
+                    <img src="endereco.png" alt="Endereços">
+                    <h3>Endereços</h3>
+                    <p>Gerencie seus endereços de entrega</p>
+                </div>
+                <div class="perfil-card nav-link" data-target="seguranca">
+                    <img src="https://img.icons8.com/pastel-glyph/64/lock--v1.png" alt="Segurança">
+                    <h3>Segurança</h3>
+                    <p>Altere sua senha e proteja sua conta</p>
+                </div>
+                <div class="perfil-card nav-link" data-target="contato">
+                    <img src="https://img.icons8.com/pastel-glyph/64/chat--v1.png" alt="Contate-nos">
+                    <h3>Contate-nos</h3>
+                    <p>Fale conosco</p>
+                </div>
+                <div class="perfil-card nav-link" data-target="faqs">
+                    <img src="duvida.jpg" alt="Perguntas Frequentes">
+                    <h3>Perguntas Frequentes</h3>
+                    <p>Tire suas dúvidas</p>
+                </div>
+            </div>
+        </section>
+        <section id="meus-pedidos" class="content-section">
+            <h2>Meus Pedidos</h2>
+            <div class="pedido-card" data-id="pedido-12345">
+                <div class="pedido-info">
+                    <h4>Pedido #12345</h4>
+                    <p>Itens: Vestido Midi Floral</p>
+                    <p>Total: R$ 289,90</p>
+                    <p>Data: 10/10/2023</p>
+                </div>
+                <span class="pedido-status status-confirmado">Confirmado</span>
+                <button class="btn-rastrear-pedido" data-pedido-id="pedido-12345">Rastrear</button>
+            </div>
+        </section>
+        <section id="dados-pessoais" class="content-section">
+            <h2>Dados Pessoais</h2>
+            <div id="dados-pessoais-content">
+                <div class="info-card">
+                    <h4>Informações Pessoais</h4>
+                    <p id="nome-exibicao"><strong>Nome:</strong> João Silva</p>
+                    <p id="email-exibicao"><strong>Email:</strong> joao.silva@email.com</p>
+                    <p id="telefone-exibicao"><strong>Telefone:</strong> (11) 99999-9999</p>
+                    <button class="btn-editar">Editar</button>
+                </div>
+            </div>
+        </section>
+        <section id="enderecos" class="content-section">
+            <h2>Meus Endereços</h2>
+            <div id="enderecos-content">
+                <div class="endereco-item">
+                    <div class="endereco-item-info">
+                        <strong>Endereço Principal</strong>
+                        <p>Rua da Felicidade, 123</p>
+                        <p>Bairro Alegria - Cidade Feliz - SP, 12345-678</p>
+                    </div>
+                    <div class="endereco-acoes">
+                        <button class="btn-editar-endereco">Editar</button>
+                        <button class="btn-remover-endereco">Remover</button>
+                    </div>
+                </div>
+                <button class="btn-adicionar-endereco">Adicionar Novo Endereço</button>
+            </div>
+        </section>
+        <section id="seguranca" class="content-section">
+            <h2>Segurança</h2>
+            <div id="seguranca-content">
+                <p>Mantenha sua conta segura alterando sua senha regularmente. Nunca compartilhe suas informações de login com terceiros.</p>
+                <button class="btn-mudar-senha">Mudar Senha</button>
+            </div>
+        </section>
+        <section id="contato" class="content-section">
+            <h2>Contate-nos</h2>
+            <div id="contato-content">
+                <p>Tem alguma dúvida? Entre em contato conosco preenchendo o formulário abaixo ou utilizando as informações de contato.</p>
+                <form id="form-contato">
+                    <div class="form-group">
+                        <label for="contato-nome">Nome</label>
+                        <input type="text" id="contato-nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contato-email">Email</label>
+                        <input type="email" id="contato-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contato-assunto">Assunto</label>
+                        <input type="text" id="contato-assunto" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contato-mensagem">Mensagem</label>
+                        <textarea id="contato-mensagem" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-enviar">Enviar Mensagem</button>
+                </form>
+                <div class="contato-info-extra">
+                    <div class="contato-item">
+                        <img src="https://img.icons8.com/sf-regular/48/phone.png" alt="Telefone">
+                        <span>(11) 98765-4321</span>
+                    </div>
+                    <div class="contato-item">
+                        <img src="https://img.icons8.com/sf-regular/48/mail.png" alt="Email">
+                        <span>contato@closetfashion.com</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="faqs" class="content-section">
+            <h2>Perguntas Frequentes (FAQs)</h2>
+            <div id="faqs-content">
+                <details class="faq-item">
+                    <summary>Quais são as formas de pagamento?</summary>
+                    <p>Aceitamos cartões de crédito (Visa, MasterCard, Elo), Pix e boleto bancário.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Qual o prazo de entrega?</summary>
+                    <p>O prazo de entrega varia de acordo com o local e a modalidade de frete escolhida. Você pode simular o prazo e o valor na página do carrinho, inserindo seu CEP.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Posso trocar um produto?</summary>
+                    <p>Sim, nossa política de troca permite a devolução ou troca de produtos em até 30 dias após o recebimento. Para mais detalhes, consulte nossa política completa de trocas.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Os produtos são de boa qualidade?</summary>
+                    <p>Trabalhamos apenas com fornecedores de alta qualidade e com tecidos selecionados para garantir a durabilidade e o conforto das nossas peças.</p>
+                </details>
+            </div>
+        </section>
+        <section id="rastreamento" class="content-section">
+            <h2>Rastreamento do Pedido</h2>
+            <div id="rastreamento-content">
+                <div class="info-rastreamento">
+                    <p>Número do Pedido: <span id="rastreamento-numero"></span></p>
+                    <p>Status Atual: <span id="rastreamento-status"></span></p>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item active" data-status="Confirmado">
+                        <h4>Pedido Confirmado</h4>
+                        <p>Seu pedido foi recebido e está em processamento.</p>
+                    </div>
+                    <div class="timeline-item" data-status="Em Transporte">
+                        <h4>Em Transporte</h4>
+                        <p>Seu pedido saiu do centro de distribuição e está a caminho.</p>
+                    </div>
+                    <div class="timeline-item" data-status="Entregue">
+                        <h4>Entregue</h4>
+                        <p>Seu pedido foi entregue com sucesso.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2023 Closet Fashion. Todos os direitos reservados.</p>
+    </footer>
+
+    <div id="removerModal" class="modal">
+        <div class="modal-content">
+            <h3>Remover Item</h3>
+            <p>Tem certeza que deseja remover este item do carrinho?</p>
+            <div class="modal-buttons">
+                <button class="btn btn-nao">Não</button>
+                <button class="btn btn-sim">Sim</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="compraModal" class="modal">
+        <div class="modal-content">
+            <h3>Compra Finalizada com Sucesso!</h3>
+            <p>Obrigado por comprar conosco!</p>
+            <div class="modal-buttons">
+                <a href="#" class="btn btn-modal btn-voltar nav-link" data-target="vestidos">Continuar Comprando</a>
+                <a href="#" class="btn btn-modal btn-rastrear nav-link" data-target="meus-pedidos">Rastrear Pedido</a>
+            </div>
+        </div>
+    </div>
+    
+    <div id="addEnderecoModal" class="modal">
+        <div class="modal-add-endereco-content">
+            <h3>Adicionar Novo Endereço</h3>
+            <form id="form-novo-endereco">
+                <div class="form-group">
+                    <label for="titulo-endereco">Título (ex: Casa, Trabalho)</label>
+                    <input type="text" id="titulo-endereco" required>
+                </div>
+                <div class="form-group">
+                    <label for="cep-endereco">CEP</label>
+                    <input type="text" id="cep-endereco" required>
+                </div>
+                <div class="form-group">
+                    <label for="rua-endereco">Endereço (Rua, Número, Bairro)</label>
+                    <input type="text" id="rua-endereco" required>
+                </div>
+                <div class="form-group">
+                    <label for="complemento-endereco">Complemento (Opcional)</label>
+                    <input type="text" id="complemento-endereco">
+                </div>
+                <div class="flex-group">
+                    <div class="form-group">
+                        <label for="cidade-endereco">Cidade</label>
+                        <input type="text" id="cidade-endereco" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="estado-endereco">Estado</label>
+                        <input type="text" id="estado-endereco" required>
+                    </div>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn btn-nao" id="btn-cancelar-endereco">Cancelar</button>
+                    <button type="submit" class="btn btn-sim">Salvar Endereço</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="mudarSenhaModal" class="modal">
+        <div class="modal-content">
+            <h3>Mudar Senha</h3>
+            <form id="form-mudar-senha">
+                <div class="form-group">
+                    <label for="senha-atual">Senha Atual</label>
+                    <input type="password" id="senha-atual" required>
+                </div>
+                <div class="form-group">
+                    <label for="nova-senha">Nova Senha</label>
+                    <input type="password" id="nova-senha" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmar-senha">Confirmar Nova Senha</label>
+                    <input type="password" id="confirmar-senha" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn btn-nao" id="btn-cancelar-senha">Cancelar</button>
+                    <button type="submit" class="btn btn-sim">Salvar Senha</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast-notification" class="toast-notification">
+        <img src="https://img.icons8.com/ios-filled/50/checked.png" alt="Ícone de sucesso" style="height: 20px; width: 20px; filter: invert(100%);">
+        <span>Item adicionado ao carrinho!</span>
+    </div>
+
+    <div id="chatbot-toggle">
+        <img src="https://img.icons8.com/ios-filled/50/chat.png" alt="Ícone de chat">
+    </div>
+    <div id="chatbot-container">
+        <div id="chatbot-header">
+            Closet Fashion - Assistente
+            <img id="close-chat" src="https://img.icons8.com/ios-filled/50/x.png" alt="Fechar" style="width: 20px; height: 20px; filter: invert(100%); cursor: pointer;">
+        </div>
+        <div id="chat-window">
+            <div class="message bot">Olá! Sou a assistente virtual da Closet Fashion. Em que posso ajudar?</div>
+            <div class="message bot">Você pode perguntar sobre: pagamentos, entregas, trocas, reembolsos, produtos ou lojas físicas.</div>
+        </div>
+        <div id="chat-input-container">
+            <input type="text" id="chat-input" placeholder="Digite sua pergunta...">
+            <button id="chat-send">
+                <img src="https://img.icons8.com/material-rounded/24/000000/forward--v1.png" alt="Enviar" style="width: 20px; height: 20px; filter: invert(100%);">
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.content-section');
+            const carrinhoItemsList = document.getElementById('carrinho-items');
+            const carrinhoContador = document.getElementById('carrinho-contador');
+            const subtotalSpan = document.getElementById('subtotal');
+            const totalSpan = document.getElementById('total');
+            const checkoutTotalSpan = document.getElementById('checkout-total');
+            const checkoutItemsDiv = document.getElementById('checkout-items');
+            const btnConfirmarPagamento = document.querySelector('.btn-confirmar-pagamento');
+            const compraModal = document.getElementById('compraModal');
+            const rastreamentoNumeroSpan = document.getElementById('rastreamento-numero');
+            const rastreamentoStatusSpan = document.getElementById('rastreamento-status');
+            const rastreamentoTimeline = document.querySelector('#rastreamento-content .timeline');
+            const removerModal = document.getElementById('removerModal');
+            
+            // Novos elementos do chatbot
+            const chatbotToggle = document.getElementById('chatbot-toggle');
+            const chatbotContainer = document.getElementById('chatbot-container');
+            const closeChatBtn = document.getElementById('close-chat');
+            const chatWindow = document.getElementById('chat-window');
+            const chatInput = document.getElementById('chat-input');
+            const chatSendBtn = document.getElementById('chat-send');
+
+            let carrinho = [];
+            let pedidos = [{
+                id: 'pedido-12345',
+                itens: [{ nome: 'Vestido Midi Floral' }],
+                total: 289.90,
+                data: '10/10/2023',
+                status: 'Confirmado'
+            }];
+            let enderecos = [
+                {
+                    id: 'endereco-1',
+                    titulo: 'Endereço Principal',
+                    rua: 'Rua da Felicidade, 123',
+                    bairro: 'Bairro Alegria',
+                    cidade: 'Cidade Feliz',
+                    estado: 'SP',
+                    cep: '12345-678'
+                }
+            ];
+
+            // Função para mostrar uma seção
+            function showSection(targetId) {
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+                
+                // Atualiza a classe 'active' do link de navegação
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.dataset.target === targetId) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Lógica específica para o carrinho e checkout
+                if (targetId === 'carrinho') {
+                    updateCarrinhoView();
+                } else if (targetId === 'checkout') {
+                    updateCheckoutView();
+                } else if (targetId === 'meus-pedidos') {
+                    updateMeusPedidosView();
+                } else if (targetId === 'perfil') {
+                    // Remove a classe 'active' do nav-link de perfil dropdown
+                    const perfilLink = document.querySelector('.perfil-link');
+                    if (perfilLink) {
+                        perfilLink.classList.add('active');
+                    }
+                } else if (targetId === 'enderecos') {
+                    updateEnderecosView();
+                }
+            }
+
+            // Função para adicionar um item ao carrinho
+            function adicionarAoCarrinho(produto) {
+                const itemExistente = carrinho.find(item => item.id === produto.id);
+                if (itemExistente) {
+                    itemExistente.quantidade++;
+                } else {
+                    carrinho.push({ ...produto, quantidade: 1 });
+                }
+                showToast('Item adicionado ao carrinho!');
+                updateCarrinhoView();
+            }
+
+            // Função para remover um item do carrinho
+            function removerDoCarrinho(itemId) {
+                carrinho = carrinho.filter(item => item.id !== itemId);
+                updateCarrinhoView();
+            }
+
+            // Função para atualizar a visualização do carrinho
+            function updateCarrinhoView() {
+                carrinhoItemsList.innerHTML = '';
+                let subtotal = 0;
+                
+                if (carrinho.length === 0) {
+                    carrinhoItemsList.innerHTML = '<p style="text-align: center; color: #777;">Seu carrinho está vazio.</p>';
+                    document.querySelector('.cart-summary .btn-finalizar').style.display = 'none';
+                } else {
+                    document.querySelector('.cart-summary .btn-finalizar').style.display = 'block';
+                    carrinho.forEach(item => {
+                        subtotal += item.preco * item.quantidade;
+                        const li = document.createElement('li');
+                        li.className = 'carrinho-item';
+                        li.dataset.itemId = item.id;
+                        li.innerHTML = `
+                            <img src="${item.imagem}" alt="${item.nome}">
+                            <div class="carrinho-item-info">
+                                <h4>${item.nome}</h4>
+                                <p>R$ ${item.preco.toFixed(2).replace('.', ',')}</p>
+                            </div>
+                            <div class="quantidade-item">
+                                <button class="btn-diminuir">-</button>
+                                <span>${item.quantidade}</span>
+                                <button class="btn-aumentar">+</button>
+                            </div>
+                            <button class="remover-item">
+                                <img src="https://img.icons8.com/ios-filled/50/x.png" alt="Remover">
+                            </button>
+                        `;
+                        carrinhoItemsList.appendChild(li);
+                    });
+                }
+                
+                carrinhoContador.textContent = carrinho.length;
+                carrinhoContador.style.display = carrinho.length > 0 ? 'block' : 'none';
+                
+                subtotalSpan.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+                totalSpan.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+            }
+
+            // Função para atualizar a visualização do checkout
+            function updateCheckoutView() {
+                checkoutItemsDiv.innerHTML = '';
+                let totalCheckout = 0;
+                if (carrinho.length === 0) {
+                    checkoutItemsDiv.innerHTML = '<p style="text-align: center; color: #777;">Nenhum item para checkout.</p>';
+                    btnConfirmarPagamento.style.display = 'none';
+                } else {
+                    btnConfirmarPagamento.style.display = 'block';
+                    carrinho.forEach(item => {
+                        const p = document.createElement('p');
+                        p.textContent = `${item.quantidade}x ${item.nome} - R$ ${(item.preco * item.quantidade).toFixed(2).replace('.', ',')}`;
+                        checkoutItemsDiv.appendChild(p);
+                        totalCheckout += item.preco * item.quantidade;
+                    });
+                }
+                checkoutTotalSpan.textContent = `R$ ${totalCheckout.toFixed(2).replace('.', ',')}`;
+            }
+
+            // Função para mostrar uma notificação de sucesso
+            function showToast(message) {
+                const toast = document.getElementById('toast-notification');
+                const toastText = toast.querySelector('span');
+                toastText.textContent = message;
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+
+            // Função para simular a criação de um pedido
+            function criarPedido() {
+                const novoPedido = {
+                    id: `pedido-${Date.now()}`,
+                    itens: [...carrinho],
+                    total: carrinho.reduce((sum, item) => sum + item.preco * item.quantidade, 0),
+                    data: new Date().toLocaleDateString('pt-BR'),
+                    status: 'Confirmado'
+                };
+                pedidos.unshift(novoPedido); // Adiciona o novo pedido no início da lista
+                
+                carrinho = []; // Limpa o carrinho
+                updateCarrinhoView();
+            }
+            
+            // Função para atualizar a visualização de Meus Pedidos
+            function updateMeusPedidosView() {
+                const meusPedidosContent = document.getElementById('meus-pedidos-content');
+                meusPedidosContent.innerHTML = '<h2>Meus Pedidos</h2>';
+                
+                if (pedidos.length === 0) {
+                    meusPedidosContent.innerHTML += '<p style="text-align: center; color: #777;">Você ainda não fez nenhum pedido.</p>';
+                    return;
+                }
+                
+                pedidos.forEach(pedido => {
+                    // Lógica para mudar o status de "Confirmado" para "Entregue" ao visualizar
+                    if (pedido.status === 'Confirmado') {
+                        pedido.status = 'Entregue';
+                    }
+
+                    const pedidoCard = document.createElement('div');
+                    pedidoCard.className = 'pedido-card';
+                    pedidoCard.dataset.id = pedido.id;
+                    pedidoCard.innerHTML = `
+                        <div class="pedido-info">
+                            <h4>Pedido #${pedido.id}</h4>
+                            <p>Itens: ${pedido.itens.map(i => i.nome).join(', ')}</p>
+                            <p>Total: R$ ${pedido.total.toFixed(2).replace('.', ',')}</p>
+                            <p>Data: ${pedido.data}</p>
+                        </div>
+                        <span class="pedido-status status-${pedido.status.toLowerCase().replace(' ', '-')}">${pedido.status}</span>
+                        ${pedido.status !== 'Entregue' ? `<button class="btn-rastrear-pedido" data-pedido-id="${pedido.id}">Rastrear</button>` : ''}
+                    `;
+                    meusPedidosContent.appendChild(pedidoCard);
+                });
+            }
+
+            // Função para atualizar a visualização de rastreamento
+            function updateRastreamentoView(pedidoId) {
+                const pedido = pedidos.find(p => p.id === pedidoId);
+                if (!pedido) {
+                    showToast('Pedido não encontrado.');
+                    return;
+                }
+                
+                rastreamentoNumeroSpan.textContent = pedido.id;
+                rastreamentoStatusSpan.textContent = pedido.status;
+                
+                rastreamentoTimeline.querySelectorAll('.timeline-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                const currentStatusElement = rastreamentoTimeline.querySelector(`[data-status="${pedido.status}"]`);
+                if (currentStatusElement) {
+                    currentStatusElement.classList.add('active');
+                }
+            }
+
+            // Evento para navegação
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.dataset.target;
+                    showSection(targetId);
+                });
+            });
+
+            // Evento para adicionar e remover itens do carrinho
+            carrinhoItemsList.addEventListener('click', (e) => {
+                const target = e.target;
+                const item = target.closest('.carrinho-item');
+                if (!item) return;
+                const itemId = item.dataset.itemId;
+                const itemNoCarrinho = carrinho.find(i => i.id === itemId);
+
+                if (target.classList.contains('btn-aumentar')) {
+                    itemNoCarrinho.quantidade++;
+                } else if (target.classList.contains('btn-diminuir')) {
+                    if (itemNoCarrinho.quantidade > 1) {
+                        itemNoCarrinho.quantidade--;
+                    } else {
+                        // Pergunta ao usuário se deseja remover se a quantidade for 1
+                        removerModal.style.display = 'block';
+                        const btnSim = removerModal.querySelector('.btn-sim');
+                        const btnNao = removerModal.querySelector('.btn-nao');
+                        
+                        btnSim.onclick = () => {
+                            removerDoCarrinho(itemId);
+                            removerModal.style.display = 'none';
+                        };
+                        btnNao.onclick = () => {
+                            removerModal.style.display = 'none';
+                        };
+                        return; // Impede a atualização imediata da view
+                    }
+                } else if (target.closest('.remover-item')) {
+                    removerModal.style.display = 'block';
+                    const btnSim = removerModal.querySelector('.btn-sim');
+                    const btnNao = removerModal.querySelector('.btn-nao');
+
+                    btnSim.onclick = () => {
+                        removerDoCarrinho(itemId);
+                        removerModal.style.display = 'none';
+                    };
+                    btnNao.onclick = () => {
+                        removerModal.style.display = 'none';
+                    };
+                    return; // Impede a atualização imediata da view
+                }
+                updateCarrinhoView();
+            });
+
+            // Evento para adicionar itens ao carrinho
+            document.querySelectorAll('.btn-adicionar').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const card = e.target.closest('.product-card');
+                    const id = card.dataset.id;
+                    const nome = card.querySelector('h3').textContent;
+                    const preco = parseFloat(card.querySelector('.price').dataset.value);
+                    const imagem = card.querySelector('img').src;
+                    
+                    adicionarAoCarrinho({ id, nome, preco, imagem });
+                });
+            });
+
+            // Adiciona a funcionalidade para o botão "Comprar"
+            document.querySelectorAll('.btn-comprar').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const card = e.target.closest('.product-card');
+                    const id = card.dataset.id;
+                    const nome = card.querySelector('h3').textContent;
+                    const preco = parseFloat(card.querySelector('.price').dataset.value);
+                    const imagem = card.querySelector('img').src;
+                    
+                    // Adiciona o item ao carrinho e, em seguida, navega para a página do carrinho
+                    adicionarAoCarrinho({ id, nome, preco, imagem });
+                    showSection('carrinho');
+                });
+            });
+
+            // Evento para finalizar a compra
+            btnConfirmarPagamento.addEventListener('click', () => {
+                criarPedido();
+                compraModal.style.display = 'block';
+                // Remove os event listeners antigos para evitar duplicação
+                document.querySelectorAll('.btn-modal').forEach(btn => {
+                    btn.removeEventListener('click', hideModalAndNavigate);
+                });
+                // Adiciona novos event listeners para o modal
+                document.querySelectorAll('.btn-modal').forEach(btn => {
+                    btn.addEventListener('click', hideModalAndNavigate);
+                });
+            });
+
+            function hideModalAndNavigate(e) {
+                const targetId = e.target.dataset.target;
+                compraModal.style.display = 'none';
+                showSection(targetId);
+                updateMeusPedidosView();
+            }
+
+            // Evento para rastrear um pedido
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('btn-rastrear-pedido')) {
+                    const pedidoId = e.target.dataset.pedidoId;
+                    const pedido = pedidos.find(p => p.id === pedidoId);
+                    
+                    if (pedido) {
+                        updateRastreamentoView(pedidoId);
+                        showSection('rastreamento');
+                    }
+                }
+            });
+
+            // Evento de envio do formulário de contato
+            const formContato = document.getElementById('form-contato');
+            formContato.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const nome = document.getElementById('contato-nome').value;
+                const email = document.getElementById('contato-email').value;
+                const assunto = document.getElementById('contato-assunto').value;
+                const mensagem = document.getElementById('contato-mensagem').value;
+
+                console.log('Dados do formulário de contato:', { nome, email, assunto, mensagem });
+                
+                showToast('Mensagem enviada com sucesso! Em breve entraremos em contato.');
+                formContato.reset();
+            });
+
+            // Lógica do Chatbot
+            const chatbotResponses = {
+                "pagamento": "Aceitamos cartões de crédito (Visa, MasterCard, Elo), Pix e boleto bancário.",
+                "formas de pagamento": "Aceitamos cartões de crédito (Visa, MasterCard, Elo), Pix e boleto bancário.",
+                "dinheiro": "Aceitamos cartões de crédito (Visa, MasterCard, Elo), Pix e boleto bancário.",
+                "pix": "Aceitamos cartões de crédito (Visa, MasterCard, Elo), Pix e boleto bancário.",
+                "troca": "Sim, nossa política de troca permite a devolução ou troca de produtos em até 30 dias após o recebimento. Para mais detalhes, consulte nossa política completa de trocas na página de 'Perguntas Frequentes'.",
+                "devolução": "Sim, nossa política de troca permite a devolução ou troca de produtos em até 30 dias após o recebimento. Para mais detalhes, consulte nossa política completa de trocas na página de 'Perguntas Frequentes'.",
+                "reembolso": "Para solicitar um reembolso, entre em contato com nosso suporte técnico. Analisaremos sua solicitação e entraremos em contato o mais breve possível. O prazo de reembolso pode variar dependendo da forma de pagamento.",
+                "dinheiro de volta": "Para solicitar um reembolso, entre em contato com nosso suporte técnico. Analisaremos sua solicitação e entraremos em contato o mais breve possível. O prazo de reembolso pode variar dependendo da forma de pagamento.",
+                "estorno": "Para solicitar um reembolso, entre em contato com nosso suporte técnico. Analisaremos sua solicitação e entraremos em contato o mais breve possível. O prazo de reembolso pode variar dependendo da forma de pagamento.",
+                "frete": "O prazo de entrega varia de acordo com o local e a modalidade de frete escolhida. Você pode simular o prazo e o valor na página do carrinho, inserindo seu CEP.",
+                "prazo": "O prazo de entrega varia de acordo com o local e a modalidade de frete escolhida. Você pode simular o prazo e o valor na página do carrinho, inserindo seu CEP.",
+                "entrega": "O prazo de entrega varia de acordo com o local e a modalidade de frete escolhida. Você pode simular o prazo e o valor na página do carrinho, inserindo seu CEP.",
+                "rastreamento": "Para rastrear seu pedido, acesse a seção 'Meu Perfil' e depois 'Meus Pedidos'. Lá você poderá acompanhar o status da sua compra.",
+                "acompanhar pedido": "Para rastrear seu pedido, acesse a seção 'Meu Perfil' e depois 'Meus Pedidos'. Lá você poderá acompanhar o status da sua compra.",
+                "qualidade": "Trabalhamos apenas com fornecedores de alta qualidade e com tecidos selecionados para garantir a durabilidade e o conforto das nossas peças.",
+                "material": "Trabalhamos apenas com fornecedores de alta qualidade e com tecidos selecionados para garantir a durabilidade e o conforto das nossas peças.",
+                "tecido": "Trabalhamos apenas com fornecedores de alta qualidade e com tecidos selecionados para garantir a durabilidade e o conforto das nossas peças.",
+                "localizacao": "Temos duas lojas físicas. A Loja São Paulo fica na Closet Fashion Shopping Iguatemi - Av. Brig. Faria Lima, 2232, e a Loja Rio de Janeiro na Shopping Boulevard, R. Barão de São Francisco, 236. Você pode ver os endereços completos na seção 'Loja Física'.",
+                "endereço": "Temos duas lojas físicas. A Loja São Paulo fica na Closet Fashion Shopping Iguatemi - Av. Brig. Faria Lima, 2232, e a Loja Rio de Janeiro na Shopping Boulevard, R. Barão de São Francisco, 236. Você pode ver os endereços completos na seção 'Loja Física'.",
+                "loja física": "Temos duas lojas físicas. A Loja São Paulo fica na Closet Fashion Shopping Iguatemi - Av. Brig. Faria Lima, 2232, e a Loja Rio de Janeiro na Shopping Boulevard, R. Barão de São Francisco, 236. Você pode ver os endereços completos na seção 'Loja Física'.",
+                "contato": "Você pode entrar em contato conosco pelo telefone (11) 98765-4321 ou pelo email contato@closetfashion.com. Se preferir, use o formulário na página 'Contate-nos'.",
+                "suporte": "Você pode entrar em contato conosco pelo telefone (11) 98765-4321 ou pelo email contato@closetfashion.com. Se preferir, use o formulário na página 'Contate-nos'.",
+                "ajuda": "Você pode entrar em contato conosco pelo telefone (11) 98765-4321 ou pelo email contato@closetfashion.com. Se preferir, use o formulário na página 'Contate-nos'.",
+                "produto": "Claro! Qual a sua dúvida sobre nossos produtos? Se precisar de mais informações sobre um item específico, a descrição em cada página de produto pode te ajudar.",
+                "olá": "Olá! Sou a assistente virtual da Closet Fashion. Em que posso ajudar?",
+                "oi": "Olá! Sou a assistente virtual da Closet Fashion. Em que posso ajudar?",
+                "bom dia": "Olá! Sou a assistente virtual da Closet Fashion. Em que posso ajudar?"
+            };
+
+            function addMessage(text, sender) {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', sender);
+                messageElement.textContent = text;
+                chatWindow.appendChild(messageElement);
+                chatWindow.scrollTop = chatWindow.scrollHeight; // Rola para o final
+            }
+
+            function getBotResponse(userMessage) {
+                const lowerCaseMessage = userMessage.toLowerCase();
+                let responseFound = false;
+                
+                for (const keyword in chatbotResponses) {
+                    if (lowerCaseMessage.includes(keyword)) {
+                        addMessage(chatbotResponses[keyword], 'bot');
+                        responseFound = true;
+                        break;
+                    }
+                }
+                
+                if (!responseFound) {
+                    addMessage("Desculpe, não entendi a sua pergunta. Você pode reformulá-la ou entrar em contato direto com nosso suporte na página 'Contate-nos'.", 'bot');
+                }
+            }
+
+            chatbotToggle.addEventListener('click', () => {
+                chatbotContainer.style.display = chatbotContainer.style.display === 'flex' ? 'none' : 'flex';
+                chatbotToggle.style.display = 'none';
+            });
+
+            closeChatBtn.addEventListener('click', () => {
+                chatbotContainer.style.display = 'none';
+                chatbotToggle.style.display = 'flex';
+            });
+
+            chatSendBtn.addEventListener('click', () => {
+                const userMessage = chatInput.value.trim();
+                if (userMessage) {
+                    addMessage(userMessage, 'user');
+                    setTimeout(() => {
+                        getBotResponse(userMessage);
+                    }, 500);
+                    chatInput.value = '';
+                }
+            });
+            
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    chatSendBtn.click();
+                }
+            });
+
+            // Lógica para o botão de Editar Dados Pessoais
+            const dadosPessoaisContent = document.getElementById('dados-pessoais-content');
+            const btnEditar = dadosPessoaisContent.querySelector('.btn-editar');
+
+            btnEditar.addEventListener('click', () => {
+                const infoCard = btnEditar.closest('.info-card');
+                const pElements = infoCard.querySelectorAll('p');
+                const isEditing = btnEditar.textContent === 'Salvar';
+
+                if (!isEditing) {
+                    // Modo de Edição
+                    pElements.forEach(p => {
+                        const label = p.querySelector('strong').textContent.replace(':', '');
+                        const currentValue = p.textContent.replace(p.querySelector('strong').textContent + ' ', '').trim();
+                        p.innerHTML = `<label for="${label.toLowerCase()}">${label}:</label><input type="text" id="${label.toLowerCase()}-input" value="${currentValue}" required>`;
+                    });
+                    btnEditar.textContent = 'Salvar';
+                    btnEditar.classList.add('btn-salvar');
+                } else {
+                    // Modo de Salvar
+                    const nome = infoCard.querySelector('#nome-input').value;
+                    const email = infoCard.querySelector('#email-input').value;
+                    const telefone = infoCard.querySelector('#telefone-input').value;
+
+                    infoCard.querySelector('#nome-exibicao').innerHTML = `<strong>Nome:</strong> ${nome}`;
+                    infoCard.querySelector('#email-exibicao').innerHTML = `<strong>Email:</strong> ${email}`;
+                    infoCard.querySelector('#telefone-exibicao').innerHTML = `<strong>Telefone:</strong> ${telefone}`;
+                    
+                    btnEditar.textContent = 'Editar';
+                    btnEditar.classList.remove('btn-salvar');
+                    showToast('Dados atualizados com sucesso!');
+                }
+            });
+
+            // Lógica para a seção de Endereços
+            const enderecosContent = document.getElementById('enderecos-content');
+            const btnAdicionarEndereco = enderecosContent.querySelector('.btn-adicionar-endereco');
+            const addEnderecoModal = document.getElementById('addEnderecoModal');
+            const btnCancelarEndereco = document.getElementById('btn-cancelar-endereco');
+            const formNovoEndereco = document.getElementById('form-novo-endereco');
+
+            function updateEnderecosView() {
+                enderecosContent.innerHTML = '<h2>Meus Endereços</h2>';
+                enderecos.forEach(endereco => {
+                    const enderecoItem = document.createElement('div');
+                    enderecoItem.className = 'endereco-item';
+                    enderecoItem.dataset.id = endereco.id;
+                    enderecoItem.innerHTML = `
+                        <div class="endereco-item-info">
+                            <strong>${endereco.titulo}</strong>
+                            <p>${endereco.rua}</p>
+                            <p>${endereco.bairro} - ${endereco.cidade} - ${endereco.estado}, ${endereco.cep}</p>
+                        </div>
+                        <div class="endereco-acoes">
+                            <button class="btn-editar-endereco">Editar</button>
+                            <button class="btn-remover-endereco">Remover</button>
+                        </div>
+                    `;
+                    enderecosContent.appendChild(enderecoItem);
+                });
+                const btnAdicionarNovo = document.createElement('button');
+                btnAdicionarNovo.className = 'btn-adicionar-endereco';
+                btnAdicionarNovo.textContent = 'Adicionar Novo Endereço';
+                btnAdicionarNovo.addEventListener('click', () => {
+                    addEnderecoModal.style.display = 'block';
+                });
+                enderecosContent.appendChild(btnAdicionarNovo);
+            }
+
+            btnAdicionarEndereco.addEventListener('click', () => {
+                addEnderecoModal.style.display = 'block';
+            });
+
+            btnCancelarEndereco.addEventListener('click', () => {
+                addEnderecoModal.style.display = 'none';
+                formNovoEndereco.reset();
+            });
+
+            formNovoEndereco.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const novoEndereco = {
+                    id: `endereco-${Date.now()}`,
+                    titulo: document.getElementById('titulo-endereco').value,
+                    cep: document.getElementById('cep-endereco').value,
+                    rua: document.getElementById('rua-endereco').value,
+                    complemento: document.getElementById('complemento-endereco').value,
+                    cidade: document.getElementById('cidade-endereco').value,
+                    estado: document.getElementById('estado-endereco').value
+                };
+                enderecos.push(novoEndereco);
+                updateEnderecosView();
+                addEnderecoModal.style.display = 'none';
+                formNovoEndereco.reset();
+                showToast('Novo endereço adicionado!');
+            });
+            
+            // Evento para remover um endereço
+            enderecosContent.addEventListener('click', (e) => {
+                if (e.target.classList.contains('btn-remover-endereco')) {
+                    const item = e.target.closest('.endereco-item');
+                    if (item) {
+                        const enderecoId = item.dataset.id;
+                        enderecos = enderecos.filter(end => end.id !== enderecoId);
+                        updateEnderecosView();
+                        showToast('Endereço removido com sucesso!');
+                    }
+                }
+            });
+
+            // Lógica para a seção de Segurança (Mudar Senha)
+            const mudarSenhaModal = document.getElementById('mudarSenhaModal');
+            const btnMudarSenha = document.querySelector('.btn-mudar-senha');
+            const btnCancelarSenha = document.getElementById('btn-cancelar-senha');
+            const formMudarSenha = document.getElementById('form-mudar-senha');
+
+            btnMudarSenha.addEventListener('click', () => {
+                mudarSenhaModal.style.display = 'block';
+            });
+
+            btnCancelarSenha.addEventListener('click', () => {
+                mudarSenhaModal.style.display = 'none';
+                formMudarSenha.reset();
+            });
+
+            formMudarSenha.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const senhaAtual = document.getElementById('senha-atual').value;
+                const novaSenha = document.getElementById('nova-senha').value;
+                const confirmarSenha = document.getElementById('confirmar-senha').value;
+
+                if (novaSenha !== confirmarSenha) {
+                    alert('As novas senhas não coincidem!');
+                    return;
+                }
+
+                // Simulação de validação da senha atual
+                // Em um ambiente real, você faria uma chamada a um servidor para validar a senha atual
+                // e salvar a nova. Aqui, apenas verificamos se não está vazia.
+                if (senhaAtual.trim() === '') {
+                    alert('Por favor, insira sua senha atual.');
+                    return;
+                }
+
+                // Se a validação for bem-sucedida
+                showToast('Senha alterada com sucesso!');
+                mudarSenhaModal.style.display = 'none';
+                formMudarSenha.reset();
+            });
+
+            // Inicia a visualização do contador do carrinho
+            updateCarrinhoView();
+            showSection('vestidos');
+        });
+    </script>
+</body>
+</html>
